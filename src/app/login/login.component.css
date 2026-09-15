@@ -1,0 +1,107 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eaf2ff;
+  padding: 20px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 70, 150, 0.12);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h1 {
+  margin: 0 0 8px;
+  color: #1456b8;
+  font-size: 30px;
+}
+
+.login-header p {
+  margin: 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #1d2939;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #b8c7dc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #1769d2;
+  box-shadow: 0 0 0 3px rgba(23, 105, 210, 0.12);
+}
+
+.btn-entrar {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #1769d2;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-entrar:hover {
+  background: #1256b0;
+}
+
+.links {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.links p {
+  margin: 18px 0 8px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  color: #1769d2;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+.criar-conta {
+  font-weight: 600;
+}
