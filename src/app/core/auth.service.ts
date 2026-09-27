@@ -14,6 +14,11 @@ export interface MeResponse {
   email: string;
 }
 
+export interface RegisterResponse {
+  email: string | null;
+  message: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +36,13 @@ export class AuthService {
           this.tokenStorage.setToken(response.accessToken);
         })
       );
+  }
+
+  register(email: string, senha: string): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(`${environment.apiUrl}/auth/register`, {
+      email,
+      senha
+    });
   }
 
   me(): Observable<MeResponse> {

@@ -29,6 +29,7 @@ API em `http://localhost:8080`.
 | Método | Rota | Acesso | Detalhe |
 |--------|------|--------|---------|
 | `POST` | `/auth/login` | Público | Body `{ "email", "senha" }` → `{ "accessToken", "tokenType": "Bearer", "expiresIn" }` ou **401** |
+| `POST` | `/auth/register` | Público | Body `{ "email", "senha" }` → **201** `{ "email", "message" }`, **409** se e-mail já existe |
 | `GET` | `/api/me` | JWT | Header `Authorization: Bearer …` → `{ "email" }` |
 
 Configuração JWT: `backend/src/main/resources/application.properties` (`jwt.secret`, `jwt.expiration-seconds`). O secret atual é só para desenvolvimento.
@@ -43,6 +44,8 @@ ng serve
 Abra `http://localhost:4200/`.
 
 - `/login` — formulário (branding UESC / brasão)
+- `/register` — criar conta (persiste em memória no backend enquanto a API estiver no ar)
+- `/forgot-password` — simulação de recuperação de senha
 - `/home` — área autenticada; chama `GET /api/me` com o token em `sessionStorage`
 
 ## Testes

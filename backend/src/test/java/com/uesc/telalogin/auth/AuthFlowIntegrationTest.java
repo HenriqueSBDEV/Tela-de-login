@@ -79,4 +79,42 @@ class AuthFlowIntegrationTest {
             .header("Authorization", "Bearer invalid.token.value"))
         .andExpect(status().isUnauthorized());
   }
+
+  @Test
+  void register_thenLogin_withCorrectAndWrongPassword() throws Exception {
+    String email = "novo.aluno." + System.nanoTime() + "@uesc.br";
+
+    mockMvc.perform(post("/auth/register")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""
+                {"email":"%s","senha":"minhaSenha"}
+                """.formatted(email)))
+        .andExpect(status().isCreated())
+        .andExpect(jsonPath("$.email").value(email));
+
+    mockMvc.perform(post("/auth/login")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""
+                {"email":"%s","senha":"errada"}
+                """.formatted(email)))
+        .andExpect(status().isUnauthorized());
+
+    mockMvc.perform(post("/auth/login")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""
+                {"email":"%s","senha":"minhaSenha"}
+                """.formatted(email)))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.accessToken").isNotEmpty());
+  }
+
+  @Test
+  void register_duplicateEmail_returnsConflict() throws Exception {
+    mockMvc.perform(post("/auth/register")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""
+                {"email":"aluno@uesc.br","senha":"outraSenha"}
+                """))
+        .andExpect(status().isConflict());
+  }
 }
