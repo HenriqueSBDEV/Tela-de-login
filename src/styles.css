@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Paleta derivada do brasão da UESC */
+  --navy: #071a36;
+  --navy-mid: #0c2f66;
+  --blue: #1246a0;
+  --blue-bright: #1a5fd0;
+  --sky: #7eb8de;
+  --sky-soft: #cfe6f5;
+  --gold: #e8b80f;
+  --gold-bright: #f5c918;
+  --flame: #e86a18;
+  --silver: #c5ccd6;
+  --laurel: #2f8a3a;
+  --foam: #f3f8fc;
+  --panel: #f7fbfe;
+  --text: #0d213f;
+  --muted: #5a6d86;
+  --danger: #c43c2c;
+  --radius: 14px;
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}

@@ -1,60 +1,66 @@
 <div class="login-page">
+  <div class="ambiance" aria-hidden="true"></div>
 
-  <div class="login-container">
+  <main class="login-shell">
+    <section class="brand-panel">
+      <img
+        class="brasao"
+        src="brasao-uesc.png"
+        width="168"
+        height="168"
+        alt="Brasão da Universidade Estadual de Santa Cruz"
+      />
+      <p class="brand-mark">UESC</p>
+      <p class="motto">In Altum</p>
+      <h1 class="brand-title">Acesso</h1>
+      <p class="brand-copy">Entre com seu e-mail institucional para continuar.</p>
+    </section>
 
-    <div class="login-header">
-      <h1>Bem-vindo!</h1>
-      <p>Entre na sua conta para continuar</p>
-    </div>
+    <section class="form-panel">
+      <header class="form-intro">
+        <h2>Entrar</h2>
+        <p>Use suas credenciais. Depois, as requisições vão só com o token.</p>
+      </header>
 
-    <form (ngSubmit)="entrar()">
+      <form class="login-form" (ngSubmit)="entrar()">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="nome@uesc.br"
+            autocomplete="username"
+            required
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="email">E-mail</label>
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            [(ngModel)]="senha"
+            placeholder="Sua senha"
+            autocomplete="current-password"
+            required
+          />
+        </div>
 
-        <input
-          type="email"
-          id="email"
-          name="email"
-          [(ngModel)]="email"
-          placeholder="Digite seu e-mail"
-          required
-        />
+        <p class="erro" *ngIf="erro" role="alert">{{ erro }}</p>
+
+        <button type="submit" class="btn-entrar" [disabled]="enviando">
+          <span>{{ enviando ? 'Entrando…' : 'Entrar' }}</span>
+        </button>
+      </form>
+
+      <div class="links">
+        <button type="button" class="link-button">Esqueci minha senha</button>
+        <p>Não possui uma conta?</p>
+        <button type="button" class="link-button criar-conta">Criar conta</button>
       </div>
-
-      <div class="form-group">
-        <label for="senha">Senha</label>
-
-        <input
-          type="password"
-          id="senha"
-          name="senha"
-          [(ngModel)]="senha"
-          placeholder="Digite sua senha"
-          required
-        />
-      </div>
-
-      <button type="submit" class="btn-entrar">
-        Entrar
-      </button>
-
-    </form>
-
-    <div class="links">
-
-      <button type="button" class="link-button">
-        Esqueci minha senha
-      </button>
-
-      <p>Não possui uma conta?</p>
-
-      <button type="button" class="link-button criar-conta">
-        Criar conta
-      </button>
-
-    </div>
-
-  </div>
-
+    </section>
+  </main>
 </div>

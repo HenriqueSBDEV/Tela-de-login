@@ -1,0 +1,169 @@
+.home-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  overflow: hidden;
+}
+
+.ambiance {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 70% 55% at 85% 15%, rgba(26, 95, 208, 0.4), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 12% 85%, rgba(232, 184, 15, 0.16), transparent 50%),
+    linear-gradient(155deg, var(--navy) 0%, var(--navy-mid) 52%, #0a3a7a 100%);
+  animation: ambiance-drift 16s ease-in-out infinite alternate;
+}
+
+.home-shell {
+  width: min(100%, 440px);
+  text-align: center;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  border: 1px solid rgba(207, 230, 245, 0.35);
+  border-radius: calc(var(--radius) + 4px);
+  background: color-mix(in srgb, var(--panel) 94%, white);
+  box-shadow: 0 18px 50px rgba(7, 26, 54, 0.28);
+  animation: shell-enter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.brasao {
+  display: block;
+  width: 88px;
+  height: auto;
+  margin: 0 auto 0.85rem;
+  /* No home o fundo do painel é claro: mantém o PNG integral */
+  filter: drop-shadow(0 8px 16px rgba(7, 26, 54, 0.2));
+}
+
+.brand-mark {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.motto {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 80%, var(--navy));
+}
+
+.home-shell h1 {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+}
+
+.identity {
+  margin: 0 0 1rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.identity strong {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.hint {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.hint code {
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--sky) 28%, white);
+  color: var(--navy-mid);
+}
+
+.erro {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--danger) 12%, white);
+  color: var(--danger);
+  font-size: 0.9rem;
+  animation: erro-in 0.35s ease both;
+}
+
+.btn-sair {
+  padding: 0.85rem 1.75rem;
+  border: none;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--blue) 0%, var(--navy-mid) 100%);
+  color: var(--foam);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-sair:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+@keyframes ambiance-drift {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.05) translate(-1.5%, 1%);
+  }
+}
+
+@keyframes shell-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes erro-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambiance,
+  .home-shell,
+  .erro {
+    animation: none;
+  }
+
+  .btn-sair:hover {
+    transform: none;
+  }
+}
