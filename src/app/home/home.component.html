@@ -1,0 +1,28 @@
+<div class="home-page">
+  <div class="ambiance" aria-hidden="true"></div>
+
+  <main class="home-shell">
+    <img
+      class="brasao"
+      src="brasao-uesc.png"
+      width="88"
+      height="88"
+      alt="Brasão da UESC"
+    />
+    <p class="brand-mark">UESC</p>
+    <p class="motto">In Altum</p>
+    <h1>Sessão ativa</h1>
+
+    <p class="identity" *ngIf="email">
+      Conectado como <strong>{{ email }}</strong>
+    </p>
+    <p *ngIf="erro" class="erro" role="alert">{{ erro }}</p>
+
+    <p class="hint">
+      Esta área chama <code>GET /api/me</code> com o Access Token.
+      A senha não é reenviada.
+    </p>
+
+    <button type="button" class="btn-sair" (click)="sair()">Sair</button>
+  </main>
+</div>

@@ -13,16 +13,16 @@
       <p class="brand-mark">UESC</p>
       <p class="motto">In Altum</p>
       <h1 class="brand-title">Acesso</h1>
-      <p class="brand-copy">Entre com seu e-mail institucional para continuar.</p>
+      <p class="brand-copy">Crie sua conta para autenticar e receber um Access Token.</p>
     </section>
 
     <section class="form-panel">
       <header class="form-intro">
-        <h2>Entrar</h2>
-        <p>Use suas credenciais. Depois, as requisições vão só com o token.</p>
+        <h2>Criar conta</h2>
+        <p>Informe e-mail e senha. Depois você poderá entrar normalmente.</p>
       </header>
 
-      <form class="login-form" (ngSubmit)="entrar()">
+      <form class="login-form" (ngSubmit)="criarConta()">
         <div class="form-group">
           <label for="email">E-mail</label>
           <input
@@ -43,23 +43,38 @@
             id="senha"
             name="senha"
             [(ngModel)]="senha"
-            placeholder="Sua senha"
-            autocomplete="current-password"
+            placeholder="Mínimo 6 caracteres"
+            autocomplete="new-password"
             required
+            minlength="6"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmarSenha">Confirmar senha</label>
+          <input
+            type="password"
+            id="confirmarSenha"
+            name="confirmarSenha"
+            [(ngModel)]="confirmarSenha"
+            placeholder="Repita a senha"
+            autocomplete="new-password"
+            required
+            minlength="6"
           />
         </div>
 
         <p class="erro" *ngIf="erro" role="alert">{{ erro }}</p>
+        <p class="sucesso" *ngIf="sucesso" role="status">{{ sucesso }}</p>
 
         <button type="submit" class="btn-entrar" [disabled]="enviando">
-          <span>{{ enviando ? 'Entrando…' : 'Entrar' }}</span>
+          <span>{{ enviando ? 'Criando…' : 'Criar conta' }}</span>
         </button>
       </form>
 
       <div class="links">
-        <a routerLink="/forgot-password" class="link-button">Esqueci minha senha</a>
-        <p>Não possui uma conta?</p>
-        <a routerLink="/register" class="link-button criar-conta">Criar conta</a>
+        <p>Já possui uma conta?</p>
+        <a routerLink="/login" class="link-button criar-conta">Entrar</a>
       </div>
     </section>
   </main>
